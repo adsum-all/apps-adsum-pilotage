@@ -70,7 +70,7 @@ export function Pilotage({ token, moi }: { token: string; moi: PilotageMoi }): J
   );
 }
 
-function TableauBord({ token }: { token: string }): JSX.Element {
+export function TableauBord({ token }: { token: string }): JSX.Element {
   const kpi = useResource(() => getTableauDeBord(token), [token]);
   const agenda = useResource(() => getPilotageAgenda(token), [token]);
   const assiduite = useResource(() => getAssiduite(token), [token]);
@@ -126,7 +126,7 @@ function TableauBord({ token }: { token: string }): JSX.Element {
   );
 }
 
-function Activites({ token, moi }: { token: string; moi: PilotageMoi }): JSX.Element {
+export function Activites({ token, moi }: { token: string; moi: PilotageMoi }): JSX.Element {
   const agenda = useResource(() => getPilotageAgenda(token), [token]);
   const perimetres = useResource(() => getPerimetres(token), [token]);
   const [titre, setTitre] = useState("");
@@ -215,7 +215,7 @@ function Activites({ token, moi }: { token: string; moi: PilotageMoi }): JSX.Ele
   );
 }
 
-function Membres({ token }: { token: string }): JSX.Element {
+export function Membres({ token }: { token: string }): JSX.Element {
   const membres = useResource(() => getPilotageMembres(token), [token]);
   const [err, setErr] = useState<string | null>(null);
   const [q, setQ] = useState("");
@@ -256,7 +256,7 @@ interface QDraft {
   type: string;
 }
 
-function Consultations({ token, moi }: { token: string; moi: PilotageMoi }): JSX.Element {
+export function Consultations({ token, moi }: { token: string; moi: PilotageMoi }): JSX.Element {
   const liste = useResource(() => listConsultations(token), [token]);
   const perimetres = useResource(() => getPerimetres(token), [token]);
   const [titre, setTitre] = useState("");

@@ -168,6 +168,19 @@ export interface Assiduite {
 }
 
 export const getAssiduite = (t: string) => authGet<Assiduite>("/api/v1/pilotage/assiduite", t, "Assiduité");
+
+export interface Tag {
+  id: string;
+  cle: string;
+  libelle: string;
+  famille: string;
+  description: string | null;
+}
+
+export const getTags = (t: string) => authGet<Tag[]>("/api/v1/tags", t, "Tags");
+export const demanderTag = (t: string, body: { famille: string; libelle: string; justification?: string }) =>
+  authSend<{ id: string }>("/api/v1/pilotage/tags/demandes", t, "POST", body, "Demande de tag");
+
 export const listConsultations = (t: string) => authGet<ConsultationItem[]>("/api/v1/pilotage/consultations", t, "Consultations");
 export const getConsultationResultats = (t: string, id: string) =>
   authGet<ConsultationResultats>(`/api/v1/pilotage/consultations/${id}/resultats`, t, "Résultats");

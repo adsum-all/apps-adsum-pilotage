@@ -83,6 +83,39 @@ h3 {
   border-color: var(--adsum-acc);
   box-shadow: 0 0 0 3px rgba(42, 79, 173, 0.15);
 }
+.pw-field {
+  position: relative;
+  display: flex;
+}
+.pw-field input {
+  width: 100%;
+  padding-right: 44px;
+}
+.pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--adsum-radius-md);
+  background: transparent;
+  color: var(--adsum-mut);
+  cursor: pointer;
+}
+.pw-toggle:hover {
+  color: var(--adsum-ink);
+}
+.pw-toggle:focus-visible {
+  outline: none;
+  color: var(--adsum-acc);
+  box-shadow: 0 0 0 3px rgba(42, 79, 173, 0.15);
+}
 .auth-error {
   color: var(--adsum-danger);
   font-size: var(--adsum-text-sm);
