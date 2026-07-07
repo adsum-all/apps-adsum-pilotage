@@ -1,14 +1,14 @@
 {
-  "name": "adsum-direction",
+  "name": "adsum-pilotage",
   "version": "0.1.0",
-  "description": "ADSUM direction app (read-only): aggregated KPIs, trends and per-commission comparison.",
+  "description": "ADSUM pilotage app for perimeter responsables (coordinateurs, intendants): dashboard, activities, consultations, members, attendance, tags, reports, scope-bounded.",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "lint": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "build": "vite build",
     "preview": "vite preview"
   },

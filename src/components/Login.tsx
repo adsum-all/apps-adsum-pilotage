@@ -11,6 +11,7 @@ const ALLOWED = new Set(["direction", "admin", "super_admin"]);
 export function Login({ onAuth }: LoginProps): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -50,13 +51,46 @@ export function Login({ onAuth }: LoginProps): JSX.Element {
         </label>
         <label>
           <span>Mot de passe</span>
-          <input
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="pw-field">
+            <input
+              type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type="button"
+              className="pw-toggle"
+              aria-pressed={showPassword}
+              aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              title={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              onClick={() => setShowPassword((v) => !v)}
+            >
+              {showPassword ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 3l18 18M10.6 10.6a2 2 0 002.8 2.8M9.9 4.24A9.1 9.1 0 0112 4c5 0 9 4.5 10 8a13 13 0 01-2.3 3.5M6.1 6.1C3.9 7.6 2.5 9.7 2 12c1 3.5 5 8 10 8a9.3 9.3 0 004.1-.9"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 12c1-3.5 5-8 10-8s9 4.5 10 8c-1 3.5-5 8-10 8s-9-4.5-10-8z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.7" />
+                </svg>
+              )}
+            </button>
+          </div>
         </label>
         {error && <p className="auth-error">{error}</p>}
         <button type="submit" className="btn btn-primary" disabled={busy}>
